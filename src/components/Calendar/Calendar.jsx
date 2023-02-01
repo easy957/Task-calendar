@@ -20,6 +20,12 @@ export default function Calendar() {
   const getDayClasses = (day) => {
     return `${s.item} ${day === daySelected ? s.active : null}`;
   };
+  const getMonthClasses = (month) => {
+    return `${s.button} ${month === monthSelected ? s.active : null}`;
+  };
+  const getYearClasses = (year) => {
+    return `${s.button} ${year === yearSelected ? s.active : null}`;
+  };
 
   const showCalendar = () => {
     if (yearSelected && monthSelected) {
@@ -64,7 +70,7 @@ export default function Calendar() {
                 dispatch(setYearSelected(year));
                 dispatch(setDaySelected(null));
               }}
-              className={s.button}
+              className={getYearClasses(year)}
             >
               {year}
             </button>
@@ -80,7 +86,7 @@ export default function Calendar() {
                 dispatch(setMonthSelected(month));
                 dispatch(setDaySelected(null));
               }}
-              className={s.button}
+              className={getMonthClasses(month)}
             >
               {month}
             </button>
