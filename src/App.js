@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import "./App.css";
-import Calendar from "./components/Calendar/Calendar";
+import CalendarPage from "./components/Calendar/CalendarPage";
 import { store } from "./redux/redux";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Calendar />
+        <CalendarPage />
       </Provider>
       {/* <div className="container">
         <div>
