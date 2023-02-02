@@ -2,7 +2,7 @@ var InvalidMonthError = require("./src/errors/InvalidMonthError");
 var InvalidMonthsError = require("./src/errors/InvalidMonthsError");
 var InvalidMonthsAbbrError = require("./src/errors/InvalidMonthsAbbrError");
 
-var InvalidWeekdayError = require("./src/errors/InvalidWeekdayError");
+//var InvalidWeekdayError = require("./src/errors/InvalidWeekdayError");
 var InvalidWeekdaysError = require("./src/errors/InvalidWeekdaysError");
 var InvalidWeekdaysAbbrError = require("./src/errors/InvalidWeekdaysAbbrError");
 
