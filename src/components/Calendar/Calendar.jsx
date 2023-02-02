@@ -6,6 +6,7 @@ import {
   setYearSelected,
 } from "../../redux/calendarSlice";
 import s from "./Calendar.module.css";
+import Years from "./Years/Years";
 
 export default function Calendar() {
   const yearSelected = useSelector((state) => state.calendar.yearSelected);
@@ -23,8 +24,10 @@ export default function Calendar() {
   const getMonthClasses = (month) => {
     return `${s.button} ${month === monthSelected ? s.active : null}`;
   };
-  const getYearClasses = (year) => {
-    return `${s.button} ${year === yearSelected ? s.active : null}`;
+
+  const selectYear = (year) => {
+    dispatch(setYearSelected(year));
+    dispatch(setDaySelected(null));
   };
 
   const showCalendar = () => {
@@ -62,21 +65,12 @@ export default function Calendar() {
   return (
     <div className={s.container}>
       <h1 className={s.title}>Calendar</h1>
-      <ul className={s.yearsList}>
-        {years.map((year) => (
-          <li key={year}>
-            <button
-              onClick={() => {
-                dispatch(setYearSelected(year));
-                dispatch(setDaySelected(null));
-              }}
-              className={getYearClasses(year)}
-            >
-              {year}
-            </button>
-          </li>
-        ))}
-      </ul>
+
+      <Years
+        years={years}
+        yearSelected={yearSelected}
+        selectYear={(year) => selectYear(year)}
+      />
 
       <ul className={s.monthsList}>
         {months.map((month) => (
