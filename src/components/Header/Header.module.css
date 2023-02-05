@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  display: block;
+  color: black;
+  text-decoration: none;
+  background-color: lavender;
+  padding: 10px;
+}
