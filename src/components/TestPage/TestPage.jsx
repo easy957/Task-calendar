@@ -1,14 +1,15 @@
 import styles from "./TestPage.module.css";
-import TestJs from "../../test"
+//import TestJs from "../../test";
+import Auth from "../../Auth.js";
 
-const name = TestJs().name();
+//const name = TestJs().name();
 
 export default function TestPage() {
   return (
     <>
       <h1 className={styles.title}>Test page</h1>
-      <p>{name}</p>
+      <Auth />
       <p></p>
     </>
-  );
+  );  
 }

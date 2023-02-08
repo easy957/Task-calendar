@@ -1,12 +1,16 @@
-/*import PocketBase from 'pocketbase';
+/*import { Pocketbase } from 'pocketbase-react';
 
-const pb = new PocketBase('http://139.162.137.51');
-const record = await pb.collection('users').getOne('RECORD_ID', {
-  expand: 'relField1,relField2.subRelField',
-});*/
+async function loadData() {
+  const pb = new Pocketbase('http://139.162.137.51');
+  const record = await pb.collection('users').getOne('RECORD_ID', {
+    expand: 'relField1,relField2.subRelField',
+  });
+  
+  return record;
+}*/
 
 function test(config) {
-  var _name = 'record';
+  var _name = "loadData()";
 
   return {
     name: function () {
