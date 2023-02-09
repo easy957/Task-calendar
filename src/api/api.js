@@ -5,7 +5,5 @@ const API = axios.create({
 });
 
 export async function fetchTasks() {
-  const data = await API.get("tasks/records");
-  console.log(data.data.items);
-  return data.data.items;
+  return API.get("tasks/records").then((response) => response.data.items);
 }

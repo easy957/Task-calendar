@@ -27,9 +27,8 @@ export const tasksSlice = createSlice({
   },
 });
 
-export const setTasksThunk = createAsyncThunk("tasks/set-tasks", async () => {
-  const tasks = await fetchTasks();
-  return tasks;
+export const setTasksThunk = createAsyncThunk("tasks/set-tasks", () => {
+  return fetchTasks();
 });
 
 export const { setTasks } = tasksSlice.actions;
