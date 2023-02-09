@@ -15,6 +15,10 @@ export const calendarSlice = createSlice({
   },
 });
 
+export const setTasksThunk = (tasks) => (dispatch) => {
+  dispatch(setTasks(tasks));
+};
+
 export const { setTasks } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

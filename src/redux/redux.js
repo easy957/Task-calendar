@@ -6,3 +6,5 @@ export const store = configureStore({
     calendar: calendarSlice,
   },
 });
+
+window.store = store;
