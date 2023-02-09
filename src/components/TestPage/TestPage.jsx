@@ -1,6 +1,7 @@
 import styles from "./TestPage.module.css";
 //import TestJs from "../../test";
 import Auth from "../../Auth.js";
+import Button from "../common/Button/Button";
 
 //const name = TestJs().name();
 
@@ -9,7 +10,8 @@ export default function TestPage() {
     <>
       <h1 className={styles.title}>Test page</h1>
       <Auth />
+      <Button />
       <p></p>
     </>
-  );  
+  );
 }
