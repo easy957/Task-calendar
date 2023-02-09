@@ -1,18 +1,15 @@
 import pb from "../src/lib/pocketbase/pocketbase";
+import API, { createNewUser } from "./api/api"
 
-//import useLogin from "./hooks/useLogin";
 import useLogout from "./hooks/useLogout";
+
 import {useState} from "react";
-
 import {useForm} from "react-hook-form";
-
-// Get first user
-/*const getFirstMember = pb.collection('users').getOne('RECORD_ID', {
-    expand: 'relField1,relField2.subRelField',
-  });*/
 
 export default function Auth() {
     const logout = useLogout();
+    const testText = "test";
+
     const [isLoading, setLoading] = useState(false);
     //const {login, isLoading} = useLogin();
 
@@ -32,6 +29,18 @@ export default function Auth() {
             }
             setLoading(false);
         reset();
+    }
+
+    async function getTask () {
+        setLoading(true);
+        try{
+            const authData = await pb.collection('tasks').getOne('RECORD_ID', {
+                expand: 'relField1,relField2.subRelField',
+        });
+        } catch(e) {
+            alert(e);
+        }
+        //testText = authData;
     }
 
     if (isLoggedIn) 
@@ -68,6 +77,11 @@ export default function Auth() {
                 {isLoading ? "Loading" : "Login"}
             </button>
         </form>
+
+        
+        <button onClick={createNewUser("Partak", "partak@mail.com", "Partak")}>
+                Create
+        </button>
 
         </>
     );
