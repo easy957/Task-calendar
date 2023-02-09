@@ -10,7 +10,9 @@ export default function TestPage() {
     <>
       <h1 className={styles.title}>Test page</h1>
       <Auth />
-      <Button />
+      <Button text="Back" active />
+      <Button text="Forward" />
+      <Button text="Confirm" />
       <p></p>
     </>
   );

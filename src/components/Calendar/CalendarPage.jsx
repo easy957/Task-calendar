@@ -9,6 +9,7 @@ import s from "./CalendarPage.module.css";
 import Calendar from "./Calendar";
 import Months from "./Months";
 import Years from "./Years";
+import API from "../../api/api";
 
 export default function CalendarPage() {
   const yearSelected = useSelector((state) => state.calendar.yearSelected);
@@ -39,6 +40,10 @@ export default function CalendarPage() {
   const selectDay = (day) => {
     dispatch(setDaySelected(day));
   };
+
+  API.get("tasks/records").then((response) => {
+    console.log(response);
+  });
 
   return (
     <div className={s.container}>

@@ -1,10 +1,10 @@
 import style from "./Button.module.css";
 
-function Button() {
+function Button({ text, active }) {
   return (
     <>
-      <button className={style.item}>
-        <h2>yo</h2>
+      <button className={`${style.item} ${active && style.active}`}>
+        {text}
       </button>
       <div></div>
     </>
