@@ -9,11 +9,15 @@ import s from "./CalendarPage.module.css";
 import Calendar from "./Calendar";
 import Months from "./Months";
 import Years from "./Years";
+import { setTasksThunk } from "../../redux/tasksSlice";
+import Tasks from "./Tasks";
 
 export default function CalendarPage() {
   const yearSelected = useSelector((state) => state.calendar.yearSelected);
   const monthSelected = useSelector((state) => state.calendar.monthSelected);
   const daySelected = useSelector((state) => state.calendar.daySelected);
+  const tasks = useSelector((state) => state.tasks.taskList);
+  const tasksLoading = useSelector((state) => state.tasks.isLoading);
 
   const dispatch = useDispatch();
 
@@ -34,6 +38,7 @@ export default function CalendarPage() {
   const selectMonth = (month) => {
     dispatch(setMonthSelected(month));
     dispatch(setDaySelected(null));
+    dispatch(setTasksThunk());
   };
 
   const selectDay = (day) => {
@@ -69,6 +74,7 @@ export default function CalendarPage() {
       {daySelected && (
         <p>
           Show tasks for {daySelected} {monthSelected} {yearSelected}
+          <Tasks tasks={tasks} isLoading={tasksLoading} />
         </p>
       )}
     </div>

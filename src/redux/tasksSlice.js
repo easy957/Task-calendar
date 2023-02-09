@@ -1,11 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchTasks } from "../api/api";
 
 const initialState = {
-  tasks: [],
+  taskList: [],
   todayTask: null,
+  isLoading: false,
 };
 
-export const calendarSlice = createSlice({
+export const tasksSlice = createSlice({
   name: "tasks",
   initialState,
   reducers: {
@@ -13,12 +15,23 @@ export const calendarSlice = createSlice({
       state.tasks = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(setTasksThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(setTasksThunk.fulfilled, (state, action) => {
+        state.taskList = [...action.payload];
+        state.isLoading = false;
+      });
+  },
 });
 
-export const setTasksThunk = (tasks) => (dispatch) => {
-  dispatch(setTasks(tasks));
-};
+export const setTasksThunk = createAsyncThunk("tasks/set-tasks", async () => {
+  const tasks = await fetchTasks();
+  return tasks;
+});
 
-export const { setTasks } = calendarSlice.actions;
+export const { setTasks } = tasksSlice.actions;
 
-export default calendarSlice.reducer;
+export default tasksSlice.reducer;
