@@ -9,3 +9,15 @@ export async function fetchTasks() {
   console.log(data.data.items);
   return data.data.items;
 }
+
+export async function createNewUser(userUsername, userEmail, userName) {
+  const data = await API.post("users/records", {
+    "username": userUsername,
+    "email": userEmail,
+    "emailVisibility": true,
+    "password": "12345",
+    "passwordConfirm": "12345",
+    "name": userName
+  });
+  return alert(data);
+}
